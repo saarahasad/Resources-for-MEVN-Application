@@ -69,8 +69,24 @@ A document is a set of key-value pairs. Documents have a dynamic schema. Dynamic
 - https://www.uxbooth.com/articles/using-dark-patterns-for-good/ 
 - https://medium.com/@InVisionApp/ux-design-tips-for-your-app-8203107c77eb#.sjnw03a9t
 
+## Storing images
+
+There are three ways to achieve this
+
+1. Save the Field directly in MongoDB (document)
+2. Save the Field directly in MongoDB (GridFS)
+3. Upload to AmazonS3 and save the ID directly in MongoDB (document)
+
+1) Only in a few cases where there is not too much to store. (not recommended)
+
+2) It's ideal for large images and where you need to add some "logic". Reference GridFS: https://docs.mongodb.com/manual/core/gridfs/ 
+
+3) Very scalable solution that offers you some advantage (S3 is less expensive than GridFS in terms of cost because GridFS charges on "database space" where Amazon-S3 is charged to you as "just object-storage".S3 came with a NPM module that is easy to use and manage.
 
 ## MongoDB GridFS vs Amazon S3 Storage
+
+- https://simonjcarr.medium.com/mongodb-gridfs-vs-s3-storage-f5ba1ebcc490 
+- https://skjcorp.com/blog/mongodb-gridfs-vs-amazon-s3-storage-comparison/?utm_source=quora 
 
 The main points to compare are:
 
